@@ -22,9 +22,9 @@ public class SerImportInvoice {
         return repoImportInvoice.findById(Id);
     }
 
-//    public  Optional<TbImportInvoice> getByCode(String Code){
-//        return repoImportInvoice.findByCode(Code);
-//    }
+    public  List<TbImportInvoice> getByCode(String code){
+        return repoImportInvoice.findByCode(code);
+    }
 
     public  List<TbImportInvoice> getByInvoiceName(String InvoiceName){
         return repoImportInvoice.findByInvoiceName(InvoiceName);

@@ -14,7 +14,7 @@ public interface RepoImportInvoice extends JpaRepository<TbImportInvoice,Long> {
 
     List<TbImportInvoice> findByInvoiceName(String invoiceName);
 
-   // Optional<TbImportInvoice> findByCode(String Code);
+    List<TbImportInvoice> findByCode(String code);
 
 
 

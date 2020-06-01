@@ -13,10 +13,10 @@ public class TbImportInvoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long Id;
 
-    @Column(name = "Code")
-    private String Code;
+    @Column(name = "code")
+    private String code;
 
-    @Column(name="InvoiceDate")
+    @Column(name="invoiceDate")
     private Date invoiceDate;
 
     @Column(name="invoiceName")
@@ -46,16 +46,13 @@ public class TbImportInvoice {
     @Column(name="suppiler_Id")
     private long suppiler_Id;
 
-    public void setId(long id) {
-        this.Id = id;
-    }
 
     public void setTotal(double total) {
         this.total = total;
     }
 
     public void setCode(String code) {
-        Code = code;
+        this.code = code;
     }
 
     public void setDebt(double debt) {
@@ -98,9 +95,6 @@ public class TbImportInvoice {
         return total;
     }
 
-    public long getId() {
-        return Id;
-    }
 
     public Date getInvoiceDate() {
         return invoiceDate;
@@ -135,10 +129,18 @@ public class TbImportInvoice {
     }
 
     public String getCode() {
-        return Code;
+        return code;
     }
 
     public String getInvoiceName() {
         return invoiceName;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 }

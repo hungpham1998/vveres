@@ -11,13 +11,13 @@ public class TbImportExportSepcial {
     private  Long Id;
 
 
-    @Column(name = "Import_Id")
+    @Column(name = "import_Id")
     private long  import_Id;
 
-    @Column(name = "Export_Id")
+    @Column(name = "export_Id")
     private long  export_Id;
 
-    @Column(name = "TypeIEproduct")
+    @Column(name = "typeIEproduct")
     private long  typeIEproduct;
 
     @Column(name = "restaurant_Id")

@@ -1,6 +1,7 @@
 package com.vv.vveres.control;
 
-import com.vv.vveres.table.TbImportInvoice;
+
+import com.vv.vveres.table.TbOrderTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,54 +10,47 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/api/importinvoice")
-
-public class ContImportInvoice {
+@RequestMapping("/api/ordertable")
+public class ContOrderTable {
     @Autowired
-    com.vv.vveres.service.SerImportInvoice serImportInvoice;
+    com.vv.vveres.service.SerOrderTable serOrderTable;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> getAll() {
-        return new ResponseEntity<>(serImportInvoice.getAll(), HttpStatus.OK);
-    }
-
-
-    @RequestMapping(value = "/getbyinvoicename", method = RequestMethod.GET)
-    @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getByInvoiceName(@RequestParam String invoiceName) {
-        return new ResponseEntity<>(serImportInvoice.getByInvoiceName(invoiceName), HttpStatus.OK);
+        return new ResponseEntity<>(serOrderTable.getAll(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getbyid", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> getById(@RequestParam Long Id) {
-        return new ResponseEntity<>(serImportInvoice.getById(Id), HttpStatus.OK);
+        return new ResponseEntity<>(serOrderTable.getById(Id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/getbycode", method = RequestMethod.GET)
+    @RequestMapping(value = "/getbytitle", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getByCode(@RequestParam String Code) {
-        return new ResponseEntity<>(serImportInvoice.getByCode(Code), HttpStatus.OK);
+    public ResponseEntity<?> getByTitle(@RequestParam String Title) {
+        return new ResponseEntity<>(serOrderTable.getByTitle(Title), HttpStatus.OK);
     }
-
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> insSent(@RequestBody TbImportInvoice Invoice) {
-        return new ResponseEntity<>(serImportInvoice.insSent(Invoice), HttpStatus.OK);
+    public ResponseEntity<?> insSent(@RequestBody TbOrderTable orderTable) {
+        return new ResponseEntity<>(serOrderTable.insSent(orderTable), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> updateSent(@RequestBody TbImportInvoice Invoice) {
-        return new ResponseEntity<>(serImportInvoice.updateSent(Invoice), HttpStatus.OK);
+    public ResponseEntity<?> updateSent(@RequestBody TbOrderTable orderTable) {
+        return new ResponseEntity<>(serOrderTable.updateSent(orderTable),HttpStatus.OK);
+
     }
+
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> deleteSent(@RequestParam  Long Id) {
-        serImportInvoice.delete(Id);
+        serOrderTable.delete(Id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

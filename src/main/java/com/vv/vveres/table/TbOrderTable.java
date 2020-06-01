@@ -4,22 +4,24 @@ package com.vv.vveres.table;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TbInEx")
-public class TbInEx {
-
+@Table(name = "TbOrderTable")
+public class TbOrderTable {
     @Id
     @Column(name = "Id",nullable=false, unique=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long Id;
 
-    @Column(name = "inEx")
-    private String inEx;
-
     @Column(name = "title")
     private String title;
 
+    @Column(name = "status")
+    private boolean status;
+
     @Column(name = "note")
     private String note;
+
+    @Column(name = "seating")
+    private int seating;
 
     @Column(name = "restaurant_Id")
     private long restaurant_Id;
@@ -28,40 +30,48 @@ public class TbInEx {
         return Id;
     }
 
-    public long getRestaurant_Id() {
-        return restaurant_Id;
+    public String getNote() {
+        return note;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getNote() {
-        return note;
+    public boolean isStatus() {
+        return status;
     }
 
-    public String getInEx() {
-        return inEx;
+    public long getRestaurant_Id() {
+        return restaurant_Id;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public int getSeating() {
+        return seating;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public void setRestaurant_Id(long restaurant_Id) {
         this.restaurant_Id = restaurant_Id;
     }
 
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setNote(String note) {
-        note = note;
+    public void setSeating(int seating) {
+        this.seating = seating;
     }
 
-    public void setInEx(String inEx) {
-        inEx = inEx;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
-

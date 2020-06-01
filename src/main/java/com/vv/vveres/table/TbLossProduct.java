@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 @Table(name = "TbLossProduct")
 public class TbLossProduct {
-    @javax.persistence.Id
+    @Id
     @Column(name = "Id",nullable=false, unique=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long Id;
@@ -21,8 +21,8 @@ public class TbLossProduct {
     @Column(name = "lossDate")
     private Date lossDate;
 
-    @Column(name="Note")
-    private  String Note;
+    @Column(name="note")
+    private  String note;
 
     @Column(name="product_Id")
     private  long product_Id;
@@ -32,6 +32,9 @@ public class TbLossProduct {
 
     @Column(name="restaurant_Id")
     private  long restaurant_Id;
+
+    @Column(name="status")
+    private  boolean status;
 
     public void setUnit_Id(long unit_Id) {
         this.unit_Id = unit_Id;
@@ -50,7 +53,7 @@ public class TbLossProduct {
     }
 
     public void setNote(String note) {
-        Note = note;
+        note = note;
     }
 
     public void setImportPrice(double importPrice) {
@@ -82,7 +85,7 @@ public class TbLossProduct {
     }
 
     public String getNote() {
-        return Note;
+        return note;
     }
 
     public double getImportPrice() {
@@ -95,5 +98,13 @@ public class TbLossProduct {
 
     public double getLossNum() {
         return lossNum;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isStatus() {
+        return status;
     }
 }

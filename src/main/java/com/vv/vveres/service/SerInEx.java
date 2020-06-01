@@ -21,13 +21,13 @@ public class SerInEx {
          return  repoInEx.findById(Id);
     }
 
-//    public List<TbInEx> getByTitle( String title){
-//         return  repoInEx.findByTitle(title);
-//    }
+    public List<TbInEx> getByTitle( String title){
+         return  repoInEx.findByTitle(title);
+    }
 
-//    public  List<TbInEx> getByInEx( String inEx){
-//         return  repoInEx.findByInEx(inEx);
-//    }
+    public  List<TbInEx> getByInEx( String inEx){
+         return  repoInEx.findByInEx(inEx);
+    }
 
     public  TbInEx insSent(TbInEx InEx){
          return  repoInEx.save(InEx);

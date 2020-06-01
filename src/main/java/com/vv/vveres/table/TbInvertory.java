@@ -11,7 +11,7 @@ import java.util.Date;
 public class TbInvertory {
 
     @Id
-    @Column(name = "Id",nullable=false, unique=false)
+    @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long Id;
 
@@ -21,8 +21,8 @@ public class TbInvertory {
     @Column(name = "productNum")
     private double productNum;
 
-    @Column(name = "Note")
-    private String Note;
+    @Column(name = "note")
+    private String note;
 
     @Column(name = "unit_Id")
     private long unit_Id;
@@ -40,8 +40,11 @@ public class TbInvertory {
     private long store_Id;
 
 
+    @Column(name = "status")
+    private boolean status;
+
     public void setNote(String note) {
-        Note = note;
+        note = note;
     }
 
     public void setRestaurant_Id(long restaurant_Id) {
@@ -77,7 +80,7 @@ public class TbInvertory {
     }
 
     public String getNote() {
-        return Note;
+        return note;
     }
 
     public long getRestaurant_Id() {
@@ -111,4 +114,13 @@ public class TbInvertory {
     public long getUnit_Id() {
         return unit_Id;
     }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
 }
