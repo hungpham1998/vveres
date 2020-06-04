@@ -3,6 +3,8 @@ package com.vv.vveres.service;
 
 import com.vv.vveres.table.TbPreparation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +34,9 @@ public class SerPreparation {
 
     public  void delete(Long Id){
         repoPreparation.deleteById(Id);
+    }
+
+    public Page<TbPreparation> getPage(Pageable pageable){
+        return repoPreparation.findAll(pageable);
     }
 }

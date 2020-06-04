@@ -3,6 +3,7 @@ package com.vv.vveres.control;
 
 import com.vv.vveres.table.TbInvertory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,27 +25,32 @@ public class ContInvertory {
         return new ResponseEntity<>(serInvertory.getAll(), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/getpage", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> getPage(Pageable pageable) {
+        return new ResponseEntity<>(serInvertory.getPage(pageable).getContent(), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/getbyid", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> getById(@RequestParam Long Id) {
         return new ResponseEntity<>(serInvertory.getById(Id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/ins", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> insSent(@RequestBody TbInvertory invertory) {
         return new ResponseEntity<>(serInvertory.insSent(invertory), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/upd", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> updateSent(@RequestBody TbInvertory invertory) {
         return new ResponseEntity<>(serInvertory.updateSent(invertory),HttpStatus.OK);
-
     }
 
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/del", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> deleteSent(@RequestParam  Long Id) {
         serInvertory.delete(Id);

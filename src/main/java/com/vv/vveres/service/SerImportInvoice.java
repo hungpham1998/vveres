@@ -2,6 +2,8 @@ package com.vv.vveres.service;
 
 import com.vv.vveres.table.TbImportInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,18 @@ public class SerImportInvoice {
 
     public List<TbImportInvoice> getAll(){
         return repoImportInvoice.findAll();
+    }
+
+    public Page<TbImportInvoice> getPage(Pageable pageable){
+        return repoImportInvoice.findAll(pageable);
+    }
+
+    public Page<TbImportInvoice> getCodePage(String Code, Pageable pageable){
+        return repoImportInvoice.findByCode(Code, pageable);
+    }
+
+    public Page<TbImportInvoice> getInvoiceNameCode(String invoiceName, Pageable pageable){
+        return repoImportInvoice.findByInvoiceName(invoiceName, pageable);
     }
 
     public Optional<TbImportInvoice> getById(long Id)

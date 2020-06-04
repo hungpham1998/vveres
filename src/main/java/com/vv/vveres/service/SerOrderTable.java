@@ -2,6 +2,8 @@ package com.vv.vveres.service;
 
 import com.vv.vveres.table.TbOrderTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,10 @@ public class SerOrderTable {
 
     public List<TbOrderTable> getAll(){
         return  repoOrderTable.findAll();
+    }
+
+    public Page<TbOrderTable> getPage(Pageable pageable){
+        return repoOrderTable.findAll(pageable);
     }
 
     public Optional<TbOrderTable> getById(Long Id){

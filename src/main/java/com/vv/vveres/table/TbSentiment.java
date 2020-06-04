@@ -17,5 +17,7 @@ public class TbSentiment {
     String qa;
     long tgian;
     long tongtg;
+//    long instime;
+//    int trained;
     int sentiment;
 }

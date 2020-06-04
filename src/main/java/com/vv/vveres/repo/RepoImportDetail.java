@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface RepoImportDetail extends JpaRepository<TbImportDetail,Long> {
-//    // public TbImportDetail updateStudent(TbImportDetail student);
 
 }

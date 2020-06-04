@@ -3,6 +3,7 @@ package com.vv.vveres.control;
 
 import com.vv.vveres.table.TbInEx;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,11 @@ public class ContInEx {
         return new ResponseEntity<>(serInEx.getAll(), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/getpage", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> getPage(Pageable pageable) {
+        return new ResponseEntity<>(serInEx.getPage(pageable).getContent(), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/getbytitle", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
@@ -41,21 +47,20 @@ public class ContInEx {
     }
 
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/ins", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> insSent(@RequestBody TbInEx inex) {
         return new ResponseEntity<>(serInEx.insSent(inex), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/upd", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> updateSent(@RequestBody TbInEx inex) {
         return new ResponseEntity<>(serInEx.updateSent(inex),HttpStatus.OK);
-
     }
 
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/del", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> deleteSent(@RequestParam  Long Id) {
         serInEx.delete(Id);

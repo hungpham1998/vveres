@@ -3,6 +3,8 @@ package com.vv.vveres.service;
 
 import com.vv.vveres.table.TbInEx;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,10 @@ public class SerInEx {
 
     public List<TbInEx> getAll(){
         return  repoInEx.findAll();
+    }
+
+    public Page<TbInEx> getPage(Pageable pageable){
+        return repoInEx.findAll(pageable);
     }
 
     public Optional<TbInEx> getById(Long Id){

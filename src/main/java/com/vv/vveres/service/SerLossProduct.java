@@ -3,6 +3,8 @@ package com.vv.vveres.service;
 
 import com.vv.vveres.table.TbLossProduct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +19,14 @@ public class SerLossProduct {
         return  repoLossProduct.findAll();
     }
 
+    public Page<TbLossProduct> getPage(Pageable pageable){
+        return repoLossProduct.findAll(pageable);
+    }
+
     public Optional<TbLossProduct> getById(Long Id){
         return  repoLossProduct.findById(Id);
     }
 
-//    public List<TbLossProduct> getByLossDate(Date LossDate){
-//        return  repoLossProduct.findByLossDate(LossDate);
-//    }
 
     public TbLossProduct insSent(TbLossProduct invertory){
         return  repoLossProduct.save(invertory);

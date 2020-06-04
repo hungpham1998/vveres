@@ -11,6 +11,7 @@ import java.util.List;
 public interface RepoInEx extends JpaRepository<TbInEx,Long> {
    List<TbInEx> findByTitle(String title);
 
-     List<TbInEx> findByInEx(String inEx);
+   List<TbInEx> findByInEx(String inEx);
+
 
 }

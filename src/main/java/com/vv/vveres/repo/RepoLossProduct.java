@@ -6,7 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepoLossProduct  extends JpaRepository<TbLossProduct,Long> {
-
-   // List<TbLossProduct> findByLossDate(Date lossDate);
-
 }
