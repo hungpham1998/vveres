@@ -1,21 +1,23 @@
 package com.vv.vveres.table;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 
 @Entity
 @Table(name = "TbImportDetail")
-//@Data
+@Data
 public class TbImportDetail {
 
     @Id
     @Column(name = "Id",nullable=false, unique=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long Id;
+    private  Long Id;
 
-    @Column(name = "active", nullable=false, unique=false)
-    private boolean active;
+    @Column(name = "Active", nullable=false, unique=false)
+    private boolean Active;
 
     @Column(name = "debtMoney")
     private double debtMoney;

@@ -36,8 +36,6 @@ public class SerImportDetail {
         repoImportDetail.deleteById(Id);
     }
 
-
-
     public  TbImportDetail UpdateSent (TbImportDetail input) {
             return repoImportDetail.save(input);
     }
