@@ -1,96 +1,46 @@
 package com.vv.vveres.table;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
+
+//author: phamthecong@gmail.com
+@Data
 @Entity
 @Table(name = "TbRateRestaurant")
 public class TbRateRestaurant {
     @Id
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(length = 10, name = "id", nullable = false, unique = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "rateSpace")
+    @Column(length = 10,name = "rateSpace")
     private  int rateSpace;
 
-    @Column(name = "rateFood")
+    @Column(length = 10,name = "rateFood")
     private  int rateFood;
 
-    @Column(name = "rateService")
+    @Column(length = 10,name = "rateService")
     private  int rateService;
 
-    @Column(name = "ratePrice")
+    @Column(length = 10,name = "ratePrice")
     private  int ratePrice;
 
-    @Column(name = "rateImage")
+    @Column(length = 10,name = "rateImage")
     private  String rateImage;
 
-    @Column(name = "rateQuality")
+    @Column(length = 10,name = "rateQuality")
     private  int rateQuality;
 
-    @Column(name = "restaurantId")
+    @Column(length = 10,name = "restaurantId")
     private long restaurantId;
 
-    @Column(name = "customerId")
+    @Column(length = 10,name = "customerId")
     private long customerId;
-
-
-    public void setId(long id) {
-        this.id = id;
-    }
-    public long getId() {
-        return id;
-    }
-    public void setRateSpace(int rateSpace) {
-        this.rateSpace = rateSpace;
-    }
-    public int getRateSpace() {
-        return rateSpace;
-    }
-    public void setRateFood(int rateFood) {
-        this.rateFood = rateFood;
-    }
-    public int getRateFood() {
-        return rateFood;
-    }
-    public void setRateService(int rateService) {
-        this.rateService = rateService;
-    }
-    public int getRateService() {
-        return rateService;
-    }
-    public void setRatePrice(int ratePrice) {
-        this.ratePrice = ratePrice;
-    }
-    public int getRatePrice() {
-        return ratePrice;
-    }
-    public void setRateImage(String rateImage) {
-        this.rateImage = rateImage;
-    }
-    public String getRateImage() {
-        return rateImage;
-    }
-    public void setRateQuality(int rateQuality) {
-        this.rateQuality = rateQuality;
-    }
-    public int getRateQuality() {
-        return rateQuality;
-    }
-    public void setRestaurantId(long restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-    public long getRestaurantId() {
-        return restaurantId;
-    }
-    public void setCustomerId(long customerId) {
-        this.customerId = customerId;
-    }
-    public long getCustomerId() {
-        return customerId;
-    }
 
 
 
 }
+

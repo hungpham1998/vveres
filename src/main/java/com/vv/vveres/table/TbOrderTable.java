@@ -3,15 +3,19 @@ package com.vv.vveres.table;
 
 import javax.persistence.*;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "TbOrderTable")
+@Data
+// Authen: Hungrost@gamil.com
 public class TbOrderTable {
     @Id
-    @Column(name = "Id",nullable=false, unique=false)
+    @Column(name = "id",nullable=false, unique=false, length = 10)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long Id;
+    private  Long id;
 
-    @Column(name = "title")
+    @Column(name = "title",nullable=false, unique=false, length = 10)
     private String title;
 
     @Column(name = "status")
@@ -20,10 +24,11 @@ public class TbOrderTable {
     @Column(name = "note")
     private String note;
 
-    @Column(name = "seating")
+    @Column(name = "seating",nullable=false, unique=false, length = 10)
     private int seating;
 
-    @Column(name = "restaurantId")
+    @Column(name = "restaurantId",nullable=false, unique=false, length = 10)
     private long restaurantId;
+
 
 }

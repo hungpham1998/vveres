@@ -24,8 +24,8 @@ public class ContPreparation {
 
     @RequestMapping(value = "/getbyid", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getById(@RequestParam Long Id) {
-        return new ResponseEntity<>(serPreparation.getById(Id), HttpStatus.OK);
+    public ResponseEntity<?> getById(@RequestParam Long id) {
+        return new ResponseEntity<>(serPreparation.getById(id), HttpStatus.OK);
     }
 
 
@@ -52,8 +52,8 @@ public class ContPreparation {
 
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> deleteSent(@RequestParam  Long Id) {
-        serPreparation.delete(Id);
+    public ResponseEntity<?> deleteSent(@RequestParam  Long id) {
+        serPreparation.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

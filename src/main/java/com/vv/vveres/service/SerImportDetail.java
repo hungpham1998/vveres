@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+// Authen: Hungrost@gamil.com
 @Service
 public class SerImportDetail {
     @Autowired
@@ -24,16 +24,16 @@ public class SerImportDetail {
     }
 
 
-    public Optional<TbImportDetail> getById(Long Id){
-        return  repoImportDetail.findById(Id);
+    public Optional<TbImportDetail> getById(Long id){
+        return  repoImportDetail.findById(id);
     }
 
     public TbImportDetail InsSent(TbImportDetail input){
         return repoImportDetail.save(input);
     }
 
-    public void Delete (Long Id){
-        repoImportDetail.deleteById(Id);
+    public void Delete (Long id){
+        repoImportDetail.deleteById(id);
     }
 
 

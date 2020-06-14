@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+// Authen: Hungrost@gamil.com
 @Service
 public class SerInvertory {
     @Autowired
@@ -22,8 +22,8 @@ public class SerInvertory {
         return repoInvertory.findAll(pageable);
     }
 
-    public  Optional<TbInvertory> getById(Long Id){
-        return  repoInvertory.findById(Id);
+    public  Optional<TbInvertory> getById(Long id){
+        return  repoInvertory.findById(id);
     }
 
     public TbInvertory insSent(TbInvertory invertory){
@@ -34,7 +34,7 @@ public class SerInvertory {
          return  repoInvertory.save(invertory);
     }
 
-    public  void delete(long Id){
-         repoInvertory.deleteById(Id);
+    public  void delete(long id){
+         repoInvertory.deleteById(id);
     }
 }

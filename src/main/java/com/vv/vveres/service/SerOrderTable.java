@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+// Authen: Hungrost@gamil.com
 @Service
 public class SerOrderTable {
     @Autowired
@@ -22,8 +22,8 @@ public class SerOrderTable {
         return repoOrderTable.findAll(pageable);
     }
 
-    public Optional<TbOrderTable> getById(Long Id){
-        return  repoOrderTable.findById(Id);
+    public Optional<TbOrderTable> getById(Long id){
+        return  repoOrderTable.findById(id);
     }
 
     public List<TbOrderTable> getByTitle(String title){
@@ -38,8 +38,8 @@ public class SerOrderTable {
          return  repoOrderTable.save(orderTable);
     }
 
-    public  void delete(Long Id){
-         repoOrderTable.deleteById(Id);
+    public  void delete(Long id){
+         repoOrderTable.deleteById(id);
     }
 
 }

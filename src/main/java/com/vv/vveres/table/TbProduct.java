@@ -1,126 +1,48 @@
 package com.vv.vveres.table;
 
+import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 
-
-
+//author: phamthecong@gmail.com
+@Data
 @Entity
 @Table(name = "TbProduct")
 public class TbProduct {
     @Id
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(length = 10, name = "id", nullable = false, unique = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "title")
+    @Column(length = 50, name = "title")
     private  String title;
 
-    @Column(name = "code")
+    @Column(length = 10, name = "code")
     private  String code;
 
-    @Column(name = "universalProCode")// mã giảm giá
+    @Column(length = 10, name = "universalProCode")// mã giảm giá
     private  String universalProCode;
 
-    @Column(name = "note")
+    @Column(length = 150, name = "note")
     private  String note;
 
-    @Column(name = "isFinishedProduct")
+    @Column(length = 10,name = "isFinishedProduct")
     private boolean isFinishedProduct;
 
-    @Column(name = "isRawMaterial")
+    @Column(length = 10,name = "isRawMaterial")
     private  boolean isRawMaterial;
 
-    @Column(name = "image")
+    @Column(length = 50, name = "image")
     private  String image;
 
-    @Column(name = "unitId")
+    @Column(length = 10,name = "unitId")
     private  long unitId;
 
-    @Column(name = "restaurantId")
+    @Column(length = 10,name = "restaurantId")
     private  long restaurantId;
 
-    @Column(name = "groupProductId")
+    @Column(length = 10,name = "groupProductId")
     private  long groupProductId;
-
-
-    public void setId(long id) {
-        this.id = id;
-    }
-    public long getId() {
-        return id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getTitle() {
-        return title;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-    public String getCode() {
-        return code;
-    }
-
-    public void setUniversalProCode(String universalProCode) {
-        this.universalProCode = universalProCode;
-    }
-    public String getUniversalProCode() {
-        return universalProCode;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-    public String getNote() {
-        return note;
-    }
-
-    public void setIsFinishedProduct(boolean isFinishedProduct) {
-        this.isFinishedProduct = isFinishedProduct;
-    }
-    public boolean getIsFinishedProduct() {
-        return isFinishedProduct;
-    }
-
-    public void setIsRawMaterial (boolean isRawMaterial) {
-        this.isRawMaterial = isRawMaterial;
-    }
-    public boolean getIsRawMaterial() {
-        return isRawMaterial;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-    public String getImage() {
-        return image;
-    }
-
-    public void setUnitId(long unitId) {
-        this.unitId = unitId;
-    }
-    public long getUnitId() {
-        return unitId;
-    }
-
-    public void setRestaurantId(long restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-    public long getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setGroupProductId(long groupProductId) {
-        this.groupProductId = groupProductId;
-    }
-    public long getGroupProductId() {
-        return groupProductId;
-    }
-
 
 
 

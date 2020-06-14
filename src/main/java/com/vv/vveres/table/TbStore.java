@@ -4,25 +4,26 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-
+//author: phamthecong@gmail.com
 @Entity
 @Table(name = "TbStore")
 @Data
 public class TbStore {
     @Id
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(length = 10,name = "id", nullable = false, unique = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "title")
+    @Column(length = 50,name = "title")
     private  String title;
 
-    @Column(name = "code")
+    @Column(length = 10,name = "code")
     private  String code;
 
-    @Column(name = "note")
+    @Column(length = 150,name = "note")
     private  String note;
 
-    @Column(name = "restaurantId")
+    @Column(length = 10,name = "restaurantId")
     private long restaurantId;
 }
+

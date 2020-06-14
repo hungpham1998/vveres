@@ -30,41 +30,41 @@ public class ContImportInvoice {
 
     @RequestMapping(value = "/findcode", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getByCode(@RequestParam String Code) {
-        return new ResponseEntity<>(serImportInvoice.getByCode(Code), HttpStatus.OK);
+    public ResponseEntity<?> getByCode(@RequestParam String code) {
+        return new ResponseEntity<>(serImportInvoice.getByCode(code), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/findcodepage", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getCodePage(@RequestParam String Code, Pageable pageable) {
-        return new ResponseEntity<>(serImportInvoice.getCodePage(Code,pageable).getContent(), HttpStatus.OK);
+    public ResponseEntity<?> getCodePage(@RequestParam String code, Pageable pageable) {
+        return new ResponseEntity<>(serImportInvoice.getCodePage(code,pageable).getContent(), HttpStatus.OK);
     }
 
 
     @RequestMapping(value = "/findinvoicename", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getByInvoiceName(@RequestParam String InvoiceName) {
-        return new ResponseEntity<>(serImportInvoice.getByInvoiceName(InvoiceName), HttpStatus.OK);
+    public ResponseEntity<?> getByInvoiceName(@RequestParam String invoiceName) {
+        return new ResponseEntity<>(serImportInvoice.getByInvoiceName(invoiceName), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/findinvoicenamepage", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getInvoiceNamePage(@RequestParam String InvoiceName, Pageable pageable) {
-        return new ResponseEntity<>(serImportInvoice.getInvoiceNameCode(InvoiceName,pageable).getContent(), HttpStatus.OK);
+    public ResponseEntity<?> getInvoiceNamePage(@RequestParam String invoiceName, Pageable pageable) {
+        return new ResponseEntity<>(serImportInvoice.getInvoiceNameCode(invoiceName,pageable).getContent(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getbyid", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getById(@RequestParam Long Id) {
-        return new ResponseEntity<>(serImportInvoice.getById(Id), HttpStatus.OK);
+    public ResponseEntity<?> getById(@RequestParam Long id) {
+        return new ResponseEntity<>(serImportInvoice.getById(id), HttpStatus.OK);
     }
 
 
 
     @RequestMapping(value = "/ins", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> insSent(@RequestBody TbImportInvoice Invoice) {
-        return new ResponseEntity<>(serImportInvoice.insSent(Invoice), HttpStatus.OK);
+    public ResponseEntity<?> insSent(@RequestBody TbImportInvoice invoice) {
+        return new ResponseEntity<>(serImportInvoice.insSent(invoice), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/upd", method = RequestMethod.POST)
@@ -75,8 +75,8 @@ public class ContImportInvoice {
 
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> deleteSent(@RequestParam  Long Id) {
-        serImportInvoice.delete(Id);
+    public ResponseEntity<?> deleteSent(@RequestParam  Long id) {
+        serImportInvoice.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

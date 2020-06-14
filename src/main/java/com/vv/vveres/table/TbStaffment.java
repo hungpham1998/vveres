@@ -1,133 +1,56 @@
 package com.vv.vveres.table;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 
-
+//author: phamthecong@gmail.com
+@Data
 @Entity
 @Table(name = "TbStaffment")
 public class TbStaffment {
     @Id
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(length = 10,name = "id", nullable = false, unique = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "title")
+    @Column(length = 50,name = "title")
     private String title ;
 
-    @Column(name = "idCard")
+    @Column(length = 20,name = "idCard")
     private String idCard ;
 
-    @Column(name = "address")
+    @Column(length = 50,name = "address")
     private String address ;
 
-    @Column(name = "phone")
+    @Column(length = 15,name = "phone")
     private String phone ;
 
-    @Column(name = "mail")
+    @Column(length = 15,name = "mail")
     private String mail ;
 
-    @Column(name = "note")
+    @Column(length = 150,name = "note")
     private String note ;
 
-    @Column(name = "startDay")
-    private Date startDay ;
+    @Basic(optional = false)
+    @Column(name = "startDay", insertable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    Date startDay;
 
-    @Column(name = "password")
+
+    @Column(length = 20,name = "password")
     private String password ;
 
-    @Column(name = "identityCard")
+    @Column(length = 20,name = "identityCard")
     private String identityCard ;
 
-    @Column(name = "departmentId")
+    @Column(length = 10,name = "departmentId")
     private long departmentId ;
 
-    @Column(name = "restaurantId")
+    @Column(length = 10,name = "restaurantId")
     private long restaurantId;
-
-    public void setId(long id) {
-        this.id = id;
-    }
-    public long getId() {
-        return id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getTitle() {
-        return title;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
-    }
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public String getAddress() {
-        return address;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-    public String getMail() {
-        return mail;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-    public String getNote() {
-        return note;
-    }
-
-    public void setStartDay(Date startDay) {
-        this.startDay = startDay;
-    }
-    public Date getStartDay() {
-        return startDay;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public String getPassword() {
-        return password;
-    }
-
-    public void setIdentityCard(String identityCard) {
-        this.identityCard = identityCard;
-    }
-    public String getIdentityCard() {
-        return identityCard;
-    }
-
-    public void setRestaurantId(long restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-    public long getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setDepartmentId(long departmentId) {
-        this.departmentId = departmentId;
-    }
-    public long getDepartmentId() {
-        return departmentId;
-    }
 
 
 }
+

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/invertory")
-
+// Authen: Hungrost@gamil.com
 public class ContInvertory {
 
     @Autowired
@@ -33,8 +33,8 @@ public class ContInvertory {
 
     @RequestMapping(value = "/getbyid", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getById(@RequestParam Long Id) {
-        return new ResponseEntity<>(serInvertory.getById(Id), HttpStatus.OK);
+    public ResponseEntity<?> getById(@RequestParam Long id) {
+        return new ResponseEntity<>(serInvertory.getById(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/ins", method = RequestMethod.POST)
@@ -52,8 +52,8 @@ public class ContInvertory {
 
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> deleteSent(@RequestParam  Long Id) {
-        serInvertory.delete(Id);
+    public ResponseEntity<?> deleteSent(@RequestParam  Long id) {
+        serInvertory.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

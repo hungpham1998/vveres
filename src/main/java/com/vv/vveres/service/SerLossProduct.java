@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+// Authen: Hungrost@gamil.com
 @Service
 public class SerLossProduct {
     @Autowired
@@ -23,8 +23,8 @@ public class SerLossProduct {
         return repoLossProduct.findAll(pageable);
     }
 
-    public Optional<TbLossProduct> getById(Long Id){
-        return  repoLossProduct.findById(Id);
+    public Optional<TbLossProduct> getById(Long id){
+        return  repoLossProduct.findById(id);
     }
 
 
@@ -36,7 +36,7 @@ public class SerLossProduct {
         return  repoLossProduct.save(invertory);
     }
 
-    public  void delete(long Id){
-        repoLossProduct.deleteById(Id);
+    public  void delete(long id){
+        repoLossProduct.deleteById(id);
     }
 }

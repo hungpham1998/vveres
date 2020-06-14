@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+// Authen: Hungrost@gamil.com
 @Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/lossproduct")
@@ -31,8 +32,8 @@ public class ContLossProduct {
 
     @RequestMapping(value = "/getbyid", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getById(@RequestParam Long Id) {
-        return new ResponseEntity<>(serLossProduct.getById(Id), HttpStatus.OK);
+    public ResponseEntity<?> getById(@RequestParam Long id) {
+        return new ResponseEntity<>(serLossProduct.getById(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/ins", method = RequestMethod.POST)
@@ -49,8 +50,8 @@ public class ContLossProduct {
 
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> deleteSent(@RequestParam  Long Id) {
-        serLossProduct.delete(Id);
+    public ResponseEntity<?> deleteSent(@RequestParam  Long id) {
+        serLossProduct.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

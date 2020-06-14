@@ -1,71 +1,34 @@
 package com.vv.vveres.table;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
+//author: phamthecong@gmail.com
+@Data
 @Entity
 @Table(name = "TbRetailProduct")
 public class TbRetailProduct {
     @Id
-    @Column(name = "id", nullable = false, unique = false)
+    @Column(length = 10,name = "id", nullable = false, unique = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "price")
+    @Column(length = 20,name = "price")
     private double price;
 
-    @Column(name = "productId")
+    @Column(length = 10,name = "productId")
     private long productId;
 
-    @Column(name = "unitId")
+    @Column(length = 10,name = "unitId")
     private long unitId;
 
-    @Column(name = "storeId")
+    @Column(length = 10,name = "storeId")
     private long storeId;
 
-    @Column(name = "restaurantId")
+    @Column(length = 10,name = "restaurantId")
     private long restaurantId;
-
-    public void setId(long id) {
-        this.id = id;
-    }
-    public long getId() {
-        return id;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    public double getPrice() {
-        return price;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setUnitId(long unitId) {
-        this.unitId = unitId;
-    }
-    public long getUnitId() {
-        return unitId;
-    }
-
-    public void setStoreId(long storeId) {
-        this.storeId = storeId;
-    }
-    public long getStoreId() {
-        return storeId;
-    }
-
-    public void setRestaurantId(long restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-    public long getRestaurantId() {
-        return restaurantId;
-    }
 
 
 }
+

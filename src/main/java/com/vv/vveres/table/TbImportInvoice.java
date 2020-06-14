@@ -1,49 +1,56 @@
 package com.vv.vveres.table;
 
 import javax.persistence.*;
+
+import lombok.Data;
+
 import java.util.Date;
 
 
 @Entity
 @Table(name = "TbImportInvoice")
+@Data
+// Authen: Hungrost@gamil.com
 public class TbImportInvoice {
 
     @Id
-    @Column(name = "Id",nullable=false, unique=false)
+    @Column(name = "id",nullable=false, unique=false, length = 10)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long Id;
-
-    @Column(name = "code")
+    private  Long id;
+    @Column(name = "code" ,nullable=false, unique=false, length = 10)
     private String code;
 
-    @Column(name="invoiceDate")
-    private Date invoiceDate;
 
-    @Column(name="invoiceName")
+    @Basic(optional = false)
+    @Column(name = "invoiceDate", insertable = false, updatable = false, length =  10)
+    @Temporal(TemporalType.TIMESTAMP)
+    Date invoiceDate;
+
+    @Column(name="invoiceName" ,nullable=false, unique=false, length = 10)
     private String invoiceName;
 
-    @Column(name="payment")
+    @Column(name="payment",nullable=false, unique=false, length = 10)
     private double payMent;
 
-    @Column(name="deposit")
+    @Column(name="deposit",nullable=false, unique=false, length = 10)
     private double deposit;
 
-    @Column(name="debt")
+    @Column(name="debt",nullable=false, unique=false, length = 10)
     private double debt;
 
-    @Column(name="total")
+    @Column(name="total",nullable=false, unique=false, length = 10)
     private double total;
 
-    @Column(name="typeImExProductId")
+    @Column(name="typeImExProductId",nullable=false, unique=false, length = 10)
     private long typeImExProductId;
 
-    @Column(name="storeId")
+    @Column(name="storeId",nullable=false, unique=false, length = 10)
     private long storeId;
 
-    @Column(name="staffmentId")
+    @Column(name="staffmentId",nullable=false, unique=false, length = 10)
     private long staffmentId;
 
-    @Column(name="suppilerId")
+    @Column(name="suppilerId",nullable=false, unique=false, length = 10)
     private long suppilerId;
 
 

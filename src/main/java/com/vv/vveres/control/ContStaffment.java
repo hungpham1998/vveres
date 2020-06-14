@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+//author: phamthecong@gmail.com
 @Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/staffment")
@@ -15,10 +16,16 @@ public class ContStaffment {
     @Autowired
     com.vv.vveres.service.SerStaffment serStaffment;
 
+    @RequestMapping(value = "/getpage", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> getPage(Pageable pageable) {
+        return new ResponseEntity<>(serStaffment.getPage(pageable).getContent(), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getAll(Pageable pageable) {
-        return new ResponseEntity<>(serStaffment.GetAll(pageable), HttpStatus.OK);
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<>(serStaffment.GetAll(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/findbyid", method = RequestMethod.GET)
@@ -27,10 +34,26 @@ public class ContStaffment {
         return new ResponseEntity<>(serStaffment.FindById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/findbyidCard", method = RequestMethod.PUT)
+    @RequestMapping(value = "/findbytitle", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> findByTitle(@RequestParam String title) {
+        return new ResponseEntity<>(serStaffment.FindByTitle(title), HttpStatus.OK);
+    }
+    @RequestMapping(value = "/findbytitlepage", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> findByTitlePage(@RequestParam String title,Pageable pageable) {
+        return new ResponseEntity<>(serStaffment.FindByTitlePage(title,pageable).getContent(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/findbyidcard", method = RequestMethod.PUT)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> findByIdCard(@RequestParam String idcard) {
         return new ResponseEntity<>(serStaffment.FindByIdCard(idcard), HttpStatus.OK);
+    }
+    @RequestMapping(value = "/findbyidcardpage", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> findByIdCardPage(@RequestParam String idcard,Pageable pageable) {
+        return new ResponseEntity<>(serStaffment.FindByIdCardPage(idcard,pageable).getContent(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/findbyaddress", method = RequestMethod.PUT)
@@ -38,17 +61,32 @@ public class ContStaffment {
     public ResponseEntity<?> findByAddress(@RequestParam String address) {
         return new ResponseEntity<>(serStaffment.FindByAddress(address), HttpStatus.OK);
     }
+    @RequestMapping(value = "/findbyaddresspage", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> findByAddressPage(@RequestParam String address,Pageable pageable) {
+        return new ResponseEntity<>(serStaffment.FindByAddressPage(address,pageable).getContent(), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/findbyphone", method = RequestMethod.PUT)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> findByPhone(@RequestParam String phone) {
         return new ResponseEntity<>(serStaffment.FindByPhone(phone), HttpStatus.OK);
     }
+    @RequestMapping(value = "/findbyphonepage", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> findByPhonePage(@RequestParam String phone,Pageable pageable) {
+        return new ResponseEntity<>(serStaffment.FindByPhonePage(phone,pageable), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/findbymail", method = RequestMethod.PUT)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> findByMail(@RequestParam String mail) {
         return new ResponseEntity<>(serStaffment.FindByMail(mail), HttpStatus.OK);
+    }
+    @RequestMapping(value = "/findbymailpage", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> findByMailPage(@RequestParam String mail,Pageable pageable) {
+        return new ResponseEntity<>(serStaffment.FindByMailPage(mail,pageable), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -76,4 +114,11 @@ public class ContStaffment {
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
+
+    @RequestMapping(value = "/delall", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> DelSen() {
+        return new ResponseEntity<>(serStaffment.DeleteAll(), HttpStatus.OK);
+    }
 }
+

@@ -1,62 +1,68 @@
 package com.vv.vveres.table;
 
 import javax.persistence.*;
+
+import lombok.Data;
+
 import java.util.Date;
 
 
 @Entity
 @Table(name = "TbImportDetail")
-//@Data
+@Data
+// Authen: Hungrost@gamil.com
 public class TbImportDetail {
 
     @Id
-    @Column(name = "Id",nullable=false, unique=false)
+    @Column(name = "id",nullable=false, unique=false, length = 10)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long Id;
+    private  long id;
 
-    @Column(name = "active", nullable=false, unique=false)
+    @Column(name = "active", length = 10)
     private boolean active;
 
-    @Column(name = "debtMoney")
+    @Column(name = "debtMoney" ,nullable=false, unique=false, length = 10)
     private double debtMoney;
 
-    @Column(name = "discountMo")
+    @Column(name = "discountMo",nullable=false, unique=false, length = 10)
     private double discountMo;
 
-    @Column(name = "discountMo1")
+    @Column(name = "discountMo1",nullable=false, unique=false, length = 10)
     private double discountMo1;
 
-    @Column(name = "discountPer")
+    @Column(name = "discountPer",nullable=false, unique=false, length = 10)
     private double discountPer;
 
-    @Column(name = "freeNum")
+    @Column(name = "freeNum",nullable=false, unique=false, length = 10)
     private double freeNum;
 
-    @Column(name = "importNum")
+    @Column(name = "importNum",nullable=false, unique=false, length = 10)
     private double importNum;
 
-    @Column(name = "importPrice")
+    @Column(name = "importPrice",nullable=false, unique=false, length = 10)
     private double importPrice;
 
-    @Column(name = "total")
+    @Column(name = "total",nullable=false, unique=false, length = 10)
     private double total;
 
-    @Column(name = "note")
+    @Column(name = "note",nullable=false, unique=false, length = 10)
     private String note;
 
-    @Column(name = "expiryDate")
-    private Date expiryDate;
+    @Basic(optional = false)
+    @Column(name = "expiryDate", insertable = false, updatable = false, length = 10)
+    @Temporal(TemporalType.TIMESTAMP)
+    Date expiryDate;
 
-    @Column(name = "unitId")
+    @Column(name = "unitId",nullable=false, unique=false, length = 10)
     private long unitId;
 
-    @Column(name = "restaurantId")
+    @Column(name = "restaurantId",nullable=false, unique=false, length = 10)
     private long restaurantId;
 
-    @Column(name = "invoicedId")
+    @Column(name = "invoicedId",nullable=false, unique=false, length = 10)
     private long invoiceId;
 
-    @Column(name = "productId")
+    @Column(name = "productId",nullable=false, unique=false, length = 10)
     private long productId;
 
 }

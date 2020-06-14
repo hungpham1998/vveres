@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+// Authen: Hungrost@gamil.com
 @Service
 public class SerPreparationDetail {
 
@@ -19,8 +19,8 @@ public class SerPreparationDetail {
         return repoPreparationDetail.findAll();
     }
 
-    public Optional<TbPreparationDetail> getById(Long Id){
-        return  repoPreparationDetail.findById(Id);
+    public Optional<TbPreparationDetail> getById(Long id){
+        return  repoPreparationDetail.findById(id);
     }
 
     public Page<TbPreparationDetail> getPage(Pageable pageable){
@@ -35,7 +35,7 @@ public class SerPreparationDetail {
         return  repoPreparationDetail.save(preparationDetail);
     }
 
-    public  void delete(Long Id){
-        repoPreparationDetail.deleteById(Id);
+    public  void delete(Long id){
+        repoPreparationDetail.deleteById(id);
     }
 }

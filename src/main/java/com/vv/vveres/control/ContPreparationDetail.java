@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+// Authen: Hungrost@gamil.com
 
 @Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -30,8 +30,8 @@ public class ContPreparationDetail {
 
     @RequestMapping(value = "/getbyid", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getById(@RequestParam Long Id) {
-        return new ResponseEntity<>(serPreparationDetail.getById(Id), HttpStatus.OK);
+    public ResponseEntity<?> getById(@RequestParam Long id) {
+        return new ResponseEntity<>(serPreparationDetail.getById(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/ins", method = RequestMethod.POST)
@@ -50,8 +50,8 @@ public class ContPreparationDetail {
 
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> deleteSent(@RequestParam  Long Id) {
-        serPreparationDetail.delete(Id);
+    public ResponseEntity<?> deleteSent(@RequestParam  Long id) {
+        serPreparationDetail.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

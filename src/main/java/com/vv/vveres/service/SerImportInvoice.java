@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+// Authen: Hungrost@gamil.com
 @Service
 public class SerImportInvoice {
 
@@ -23,25 +23,25 @@ public class SerImportInvoice {
         return repoImportInvoice.findAll(pageable);
     }
 
-    public Page<TbImportInvoice> getCodePage(String Code, Pageable pageable){
-        return repoImportInvoice.findByCode(Code, pageable);
+    public Page<TbImportInvoice> getCodePage(String code, Pageable pageable){
+        return repoImportInvoice.findByCode(code, pageable);
     }
 
     public Page<TbImportInvoice> getInvoiceNameCode(String invoiceName, Pageable pageable){
         return repoImportInvoice.findByInvoiceName(invoiceName, pageable);
     }
 
-    public Optional<TbImportInvoice> getById(long Id)
+    public Optional<TbImportInvoice> getById(long id)
     {
-        return repoImportInvoice.findById(Id);
+        return repoImportInvoice.findById(id);
     }
 
     public  List<TbImportInvoice> getByCode(String code){
         return repoImportInvoice.findByCode(code);
     }
 
-    public  List<TbImportInvoice> getByInvoiceName(String InvoiceName){
-        return repoImportInvoice.findByInvoiceName(InvoiceName);
+    public  List<TbImportInvoice> getByInvoiceName(String invoiceName){
+        return repoImportInvoice.findByInvoiceName(invoiceName);
     }
 
     public  TbImportInvoice insSent(TbImportInvoice invoice){
@@ -52,7 +52,7 @@ public class SerImportInvoice {
         return repoImportInvoice.save(invoice);
     }
 
-    public  void delete (Long Id){
-       repoImportInvoice.deleteById(Id);
+    public  void delete (Long id){
+       repoImportInvoice.deleteById(id);
     }
 }

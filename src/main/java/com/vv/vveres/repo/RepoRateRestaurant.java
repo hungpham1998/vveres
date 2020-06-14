@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+//author: phamthecong@gmail.com
 @Repository
 public interface RepoRateRestaurant extends JpaRepository<TbRateRestaurant,Long>{
-    Optional<TbRateRestaurant> findById(long id);
+    Optional<TbRateRestaurant> findById(Long id);
 }
+

@@ -3,44 +3,51 @@ package com.vv.vveres.table;
 
 
 import javax.persistence.*;
+
+import lombok.Data;
+
 import java.util.Date;
 
 
 @Entity
 @Table(name = "TbInvertory")
+@Data
+// Authen: Hungrost@gamil.com
 public class TbInvertory {
 
     @Id
-    @Column(name = "Id")
+    @Column(name = "id",nullable=false, unique=false, length = 10)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long Id;
+    private  Long id;
 
-    @Column(name = "expiryDate")
-    private Date expiryDate;
+    @Basic(optional = false)
+    @Column(name = "expiryDate", insertable = false, updatable = false, length =  10)
+    @Temporal(TemporalType.TIMESTAMP)
+    Date expiryDate;
 
-    @Column(name = "productNum")
+    @Column(name = "productNum",nullable=false, unique=false, length = 10)
     private double productNum;
 
-    @Column(name = "note")
+    @Column(name = "note",nullable=false, unique=false, length = 10)
     private String note;
 
-    @Column(name = "unitId")
+    @Column(name = "unitId",nullable=false, unique=false, length = 10)
     private long unitId;
 
-    @Column(name = "productId")
+    @Column(name = "productId",nullable=false, unique=false, length = 10)
     private long productId;
 
-    @Column(name = "importinvoiceId")
+    @Column(name = "importinvoiceId",nullable=false, unique=false, length = 10)
     private long importinvoiceId;
 
-    @Column(name = "restaurantId")
+    @Column(name = "restaurantId",nullable=false, unique=false, length = 10)
     private long restaurantId;
 
-    @Column(name = "storeId")
+    @Column(name = "storeId",nullable=false, unique=false, length = 10)
     private long storeId;
-
 
     @Column(name = "status")
     private boolean status;
+
 
 }

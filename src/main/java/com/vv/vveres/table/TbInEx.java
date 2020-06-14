@@ -3,26 +3,30 @@ package com.vv.vveres.table;
 
 import javax.persistence.*;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "TbInEx")
+@Data
+// Authen: Hungrost@gamil.com
 public class TbInEx {
 
     @Id
-    @Column(name = "Id",nullable=false, unique=false)
+    @Column(name = "id",nullable=false, unique=false, length = 10)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long Id;
+    private  Long id;
 
-    @Column(name = "inEx")
+    @Column(name = "inEx",nullable=false, unique=false, length = 10)
     private String inEx;
 
-    @Column(name = "title")
+    @Column(name = "title",nullable=false, unique=false, length = 10)
     private String title;
 
-    @Column(name = "note")
+    @Column(name = "note",nullable=false, unique=false, length = 10)
     private String note;
 
-    @Column(name = "restaurantId")
+    @Column(name = "restaurantId",nullable=false, unique=false, length = 10)
     private long restaurantId;
 
-}
 
+}

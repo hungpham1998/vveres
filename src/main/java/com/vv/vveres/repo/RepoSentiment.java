@@ -1,6 +1,6 @@
 package com.vv.vveres.repo;
 
-import com.sun.org.apache.xpath.internal.objects.XString;
+
 import com.vv.vveres.table.TbSentiment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

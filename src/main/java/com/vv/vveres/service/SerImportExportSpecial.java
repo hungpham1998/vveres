@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+// Authen: Hungrost@gamil.com
 @Service
 public class SerImportExportSpecial {
     @Autowired
@@ -22,8 +22,8 @@ public class SerImportExportSpecial {
         return repoImportExportSepcial.findAll(pageable);
     }
 
-    public Optional<TbImportExportSepcial> getById(Long Id){
-         return  repoImportExportSepcial.findById(Id);
+    public Optional<TbImportExportSepcial> getById(Long id){
+         return  repoImportExportSepcial.findById(id);
     }
 
     public TbImportExportSepcial insSent(TbImportExportSepcial ImportExportSpecial){
@@ -34,7 +34,7 @@ public class SerImportExportSpecial {
          return  repoImportExportSepcial.save(importExportSepcial);
     }
 
-    public void  delete(Long Id){
-         repoImportExportSepcial.deleteById(Id);
+    public void  delete(Long id){
+         repoImportExportSepcial.deleteById(id);
     }
 }
