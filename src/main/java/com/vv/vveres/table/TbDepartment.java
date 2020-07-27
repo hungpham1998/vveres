@@ -28,4 +28,5 @@ public class TbDepartment{
     private long restaurantId;
 
 
+
 }

@@ -40,7 +40,5 @@ public class TbDiscountProduct
 
     @Column(name="restaurantId", nullable = false, unique = false,length = 10)
     private long restaurantId;
-
-
 }
 

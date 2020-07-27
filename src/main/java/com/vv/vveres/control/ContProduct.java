@@ -1,5 +1,6 @@
 package com.vv.vveres.control;
 
+import com.vv.vveres.dto.DTOProduct;
 import com.vv.vveres.table.TbProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +15,12 @@ import org.springframework.web.bind.annotation.*;
 public class ContProduct {
     @Autowired
     com.vv.vveres.service.SerProduct serProduct;
+
+    @RequestMapping(value = "/getalldtoproduct", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> getAllDTOProduct(Pageable pageable) {
+        return new ResponseEntity<>(serProduct.GetAllDtoProduct(pageable), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/getpage", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
@@ -44,16 +51,19 @@ public class ContProduct {
     public ResponseEntity<?> findByTitle(@RequestParam String title) {
         return new ResponseEntity<>(serProduct.FindByTitle(title), HttpStatus.OK);
     }
-
-
-
-
-
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.PUT)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> insSent(@RequestBody TbProduct prInput) {
-        return new ResponseEntity<>(serProduct.InsSent(prInput), HttpStatus.OK);
+    public ResponseEntity<?> insSent(@RequestBody DTOProduct prInput) {
+        if(prInput.getId() == null)
+            prInput.setId(0L);
+        return new ResponseEntity<>(serProduct.InsSentMany2Many(prInput), HttpStatus.OK);
     }
+//    // tranducdang@gmail.com
+//    @RequestMapping(value = "/ins", method = RequestMethod.POST)
+//    @CrossOrigin(origins = "*", maxAge = 3600)
+//    public ResponseEntity<?> insProduct(@RequestBody TbProduct prInput) {
+//        return new ResponseEntity<>(serProduct.InsSentMany2Many(prInput), HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
@@ -61,7 +71,6 @@ public class ContProduct {
         return new ResponseEntity<>(serProduct.UpdateSent(Product),HttpStatus.OK);
 
     }
-
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     @CrossOrigin(origins = "*", maxAge = 3600)

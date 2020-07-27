@@ -3,11 +3,16 @@ package com.vv.vveres.table;
 
 import javax.persistence.*;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "TbOrderTable")
-@Data
+
 // Authen: Hungrost@gamil.com
 public class TbOrderTable {
     @Id
@@ -27,8 +32,10 @@ public class TbOrderTable {
     @Column(name = "seating",nullable=false, unique=false, length = 10)
     private int seating;
 
-    @Column(name = "restaurantId",nullable=false, unique=false, length = 10)
-    private long restaurantId;
+    @ManyToOne
+    @JoinColumn(name = "restaurantid", nullable = false)
+    // @JsonIgnoreProperties("restaurantOrderTable")
+    private TbRestaurant orderTableRestaurant;
 
 
 }

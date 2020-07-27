@@ -1,14 +1,24 @@
 package com.vv.vveres.table;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.swing.*;
 import java.util.Date;
+import java.util.Set;
 
 // author: vutrananh98hn@gmail.com
+// edit author: hungrost@gmail.com
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "tbCustomer")
-@Data
+
 
 public class TbCustomer {
     @Id
@@ -36,16 +46,25 @@ public class TbCustomer {
     @Column(name="fax", nullable = false, unique = false,length = 15)
     private String fax;
 
-    @Column(name="debtMoney", nullable = false, unique = false,length = 20)
-    private double debtMoney;
+    @Column(name="debtmoney", nullable = false, unique = false,length = 20)
+    private double debtmoney;
 
     @Column(name="note", nullable = false, unique = false,length = 150)
     private String note;
 
-    @Column(name="customergroupId", nullable = false, unique = false,length = 10)
-    private long customergroupId;
 
     @Column(name="restaurantId", nullable = false, unique = false,length = 10)
     private long restaurantId;
+
+//    @ManyToOne
+//    @JoinColumn(name = "customergroupid", nullable = false)
+//    @JsonIgnoreProperties("customer")
+//    private TbCustomerGroup customerGroup;
+
+    // @JsonBackReference
+    @JsonIgnore
+    @OneToMany(mappedBy = "tbCustomer", fetch = FetchType.LAZY)
+    //@JsonIgnoreProperties("tbCustomer")
+    private Set<TbExportInvoice> tbExportInvoice;
 
 }

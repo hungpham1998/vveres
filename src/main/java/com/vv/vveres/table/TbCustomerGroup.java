@@ -1,8 +1,11 @@
 package com.vv.vveres.table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 // author: vutrananh98hn@gmail.com
 
@@ -27,5 +30,10 @@ public class TbCustomerGroup {
 
     @Column(name="restaurantId", nullable = false, unique = false,length = 10)
     private long restaurantId;
+
+
+//    @OneToMany
+//    @JsonIgnoreProperties("customerGroup")
+//    private Set<TbCustomer> customer = new HashSet<>();
 
 }

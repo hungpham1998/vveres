@@ -13,12 +13,12 @@ import java.util.Optional;
 public interface RepoStaffment extends JpaRepository<TbStaffment,Long>{
     Optional<TbStaffment> findById(Long id);
     List<TbStaffment> findByTitle(String title);
-    List<TbStaffment> findByIdCard(String idCard);
+    List<TbStaffment> findByIdcard(String idcard);
     List<TbStaffment> findByAddress(String address);
     List<TbStaffment> findByPhone(String phone);
     List<TbStaffment> findByMail(String mail);
     Page<TbStaffment> findByTitle(String title,Pageable pageable);
-    Page<TbStaffment> findByIdCard(String idCard, Pageable pageable);
+    Page<TbStaffment> findByIdcard(String idcard, Pageable pageable);
     Page<TbStaffment> findByAddress(String address, Pageable pageable);
     Page<TbStaffment> findByPhone(String phone, Pageable pageable);
     Page<TbStaffment> findByMail(String mail, Pageable pageable);

@@ -2,14 +2,25 @@ package com.vv.vveres.table;
 
 import javax.persistence.*;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "TbImportInvoice")
-@Data
+
 // Authen: Hungrost@gamil.com
 public class TbImportInvoice {
 
@@ -22,15 +33,15 @@ public class TbImportInvoice {
 
 
     @Basic(optional = false)
-    @Column(name = "invoiceDate", insertable = false, updatable = false, length =  10)
+    @Column(name = "invoicedate", insertable = false, updatable = false, length =  10)
     @Temporal(TemporalType.TIMESTAMP)
-    Date invoiceDate;
+    Date invoicedate;
 
-    @Column(name="invoiceName" ,nullable=false, unique=false, length = 10)
-    private String invoiceName;
+    @Column(name="invoicename" ,nullable=false, unique=false, length = 10)
+    private String invoicename;
 
     @Column(name="payment",nullable=false, unique=false, length = 10)
-    private double payMent;
+    private double payment;
 
     @Column(name="deposit",nullable=false, unique=false, length = 10)
     private double deposit;
@@ -41,17 +52,57 @@ public class TbImportInvoice {
     @Column(name="total",nullable=false, unique=false, length = 10)
     private double total;
 
-    @Column(name="typeImExProductId",nullable=false, unique=false, length = 10)
-    private long typeImExProductId;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "type_im_ex_product_id", nullable = false)
+//    @JsonIgnoreProperties("imexImport")
+//    private TbTypeImexProduct importImEx;
 
-    @Column(name="storeId",nullable=false, unique=false, length = 10)
-    private long storeId;
 
-    @Column(name="staffmentId",nullable=false, unique=false, length = 10)
-    private long staffmentId;
+//    @ManyToOne
+//    @JoinColumn(name = "storeid", nullable = false)
+//    @JsonIgnoreProperties("storeImport")
+//    private TbStore importStore;
 
-    @Column(name="suppilerId",nullable=false, unique=false, length = 10)
-    private long suppilerId;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "storeid", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    // @JsonIgnoreProperties("tbExportInvoice")
+    private TbStore tbStore;
 
+
+//    @ManyToOne
+//    @JoinColumn(name = "staffmentid", nullable = false)
+//    @JsonIgnoreProperties("staffmentImport")
+//    private TbStaffment importStaffment;
+
+
+//    @ManyToOne
+//    @JoinColumn(name = "suppilerid", nullable = false)
+//    @JsonIgnoreProperties("supplierImportInvoice")
+//    private TbSupplier importInvoiceSupplier;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "suppilerid", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    // @JsonIgnoreProperties("tbExportInvoice")
+    private TbSupplier tbSupplier;
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "importDetailInvoice")
+    @JsonIgnoreProperties("importDetailInvoice")
+    private Set<TbImportDetail> importInvoiceDetail = new HashSet<>();
+
+//    @ManyToOne
+//    @JoinColumn(name = "restaurantid", nullable = false)
+//    @JsonIgnoreProperties("restaurantImportInvoice")
+//    private TbRestaurant importInvoiceRestaurant;
+
+//    @JsonBackReference
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tbImportInvoice")
+    private Set<TbExportDetail> tbExportDetails;
 
 }

@@ -43,14 +43,14 @@ public class ContImportInvoice {
 
     @RequestMapping(value = "/findinvoicename", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getByInvoiceName(@RequestParam String invoiceName) {
-        return new ResponseEntity<>(serImportInvoice.getByInvoiceName(invoiceName), HttpStatus.OK);
+    public ResponseEntity<?> getByInvoiceName(@RequestParam String invoicename) {
+        return new ResponseEntity<>(serImportInvoice.getByInvoiceName(invoicename), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/findinvoicenamepage", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> getInvoiceNamePage(@RequestParam String invoiceName, Pageable pageable) {
-        return new ResponseEntity<>(serImportInvoice.getInvoiceNameCode(invoiceName,pageable).getContent(), HttpStatus.OK);
+    public ResponseEntity<?> getInvoiceNamePage(@RequestParam String invoicename, Pageable pageable) {
+        return new ResponseEntity<>(serImportInvoice.getInvoiceNameCode(invoicename,pageable).getContent(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getbyid", method = RequestMethod.GET)

@@ -1,66 +1,78 @@
 package com.vv.vveres.table;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 // author: vutrananh98hn@gmail.com
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="tbExportDetail")
-@Data
 
 public class TbExportDetail {
     @Id
-    @Column(name="id", nullable = false, unique= false,length = 10)
+    @Column(name="id", nullable = false, unique= false,length = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="importinvoiceId", nullable = false, unique = false,length = 10)
-    private long importinvoiceId;
-
-    @Column(name="productId", nullable = false, unique = false,length = 10)
-    private long productId;
 
     @Basic(optional = false)
-    @Column(name = "expiryDate", insertable = false, updatable = false,nullable = false, unique = false)
+    @Column(name = "expirydate", insertable = false, updatable = false,nullable = false, unique = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
-    Date expiryDate;
+    private Date expirydate;
 
-    @Column(name="exportPrice", nullable = false, unique = false,length = 10)
-    private double exportPrice;
+    @Column(name="exportprice", nullable = false, unique = false,length = 20)
+    private double exportprice;
 
-    @Column(name="exportNum", nullable = false, unique = false,length = 10)
-    private double exportNum;
+    @Column(name="exportnum", nullable = false, unique = false,length = 20)
+    private double exportnum;
 
-    @Column(name="freeNum", nullable = false, unique = false,length = 10)
-    private double freeNum;
+    @Column(name="freenum", nullable = false, unique = false,length = 20)
+    private double freenum;
 
-    @Column(name="unitId", nullable = false, unique = false,length = 10)
-    private long unitId;
 
-    @Column(name="discountPer", nullable = false, unique = false,length = 10)
-    private double discountPer ;
+    @Column(name="discountper", nullable = false, unique = false,length = 20)
+    private double discountper ;
 
-    @Column(name="discountMo", nullable = false, unique = false,length = 10)
+    @Column(name="discountmo", nullable = false, unique = false,length = 20)
     private double discountmo ;
 
-    @Column(name="discountMo1", nullable = false, unique = false,length = 10)
+    @Column(name="discountmo1", nullable = false, unique = false,length = 20)
     private double discountmo1;
 
-    @Column(name="total", nullable = false, unique = false,length = 10)
+    @Column(name="total", nullable = false, unique = false,length = 20)
     private double total ;
 
-    @Column(name="customerId", nullable = false, unique = false,length = 10)
-    private long customerId;
 
-    @Column(name="storeId", nullable = false, unique = false,length = 10)
-    private long storeId;
+//    @JsonBackReference
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "export_invoice_id", nullable = false)
+    private TbExportInvoice tbExportInvoice;
+
+//    @JsonManagedReference
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "unit_id", nullable = false)
+    private TbUnit tbUnit;
+
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private TbProduct tbProduct;
 
 
-    @Column(name="staffmentId", nullable = false, unique = false,length = 10)
-    private long staffmentId;
-
-    @Column(name="restaurantId", nullable = false, unique = false,length = 10)
-    private long restaurantId;
+//    @JsonManagedReference
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "import_invoice_id", nullable = false)
+    private TbImportInvoice tbImportInvoice;
 }

@@ -1,5 +1,6 @@
 package com.vv.vveres.control;
 
+import com.vv.vveres.dto.DTOExportDetail;
 import com.vv.vveres.table.TbExportDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -40,32 +41,32 @@ public class ContExportDetail {
     {
         return new ResponseEntity<>(serExportDetail.FindById(id), HttpStatus.OK);
     }
+//
+//    @RequestMapping(value = "/findbyexpirydate", method = RequestMethod.GET)
+//    @CrossOrigin(origins = "*", maxAge = 3600)
+//    public ResponseEntity<?> findByExpiryDate(@RequestParam Date  expiryDate)
+//    {
+//        return new ResponseEntity<>(serExportDetail.FindByExpiryDate(expiryDate), HttpStatus.OK);
+//    }
+//
+//    @RequestMapping(value = "/findbyexpirydatepage", method = RequestMethod.PUT)
+//    @CrossOrigin(origins = "*", maxAge = 3600)
+//    public ResponseEntity<?> findByExpiryDatePage(@RequestParam Date expiryDate, Pageable pageable) {
+//        return new ResponseEntity<>(serExportDetail.FindByExpiryDatePage(expiryDate,pageable).getContent(), HttpStatus.OK);
+//    }
 
-    @RequestMapping(value = "/findbyexpirydate", method = RequestMethod.GET)
-    @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> findByExpiryDate(@RequestParam Date  expiryDate)
-    {
-        return new ResponseEntity<>(serExportDetail.FindByExpiryDate(expiryDate), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/findbyexpirydatepage", method = RequestMethod.PUT)
-    @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> findByExpiryDatePage(@RequestParam Date expiryDate, Pageable pageable) {
-        return new ResponseEntity<>(serExportDetail.FindByExpiryDatePage(expiryDate,pageable).getContent(), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/findbyexportprice", method = RequestMethod.GET)
-    @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> findByExportPrice(@RequestParam double exportPrice)
-    {
-        return new ResponseEntity<>(serExportDetail.FindByExportPrice(exportPrice), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/findbyexportpricepage", method = RequestMethod.PUT)
-    @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> findByExportPricePage(@RequestParam double exportPrice, Pageable pageable) {
-        return new ResponseEntity<>(serExportDetail.FindByExportPricePage(exportPrice,pageable).getContent(), HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/findbyexportprice", method = RequestMethod.GET)
+//    @CrossOrigin(origins = "*", maxAge = 3600)
+//    public ResponseEntity<?> findByExportPrice(@RequestParam double exportPrice)
+//    {
+//        return new ResponseEntity<>(serExportDetail.FindByExportPrice(exportPrice), HttpStatus.OK);
+//    }
+//
+//    @RequestMapping(value = "/findbyexportpricepage", method = RequestMethod.PUT)
+//    @CrossOrigin(origins = "*", maxAge = 3600)
+//    public ResponseEntity<?> findByExportPricePage(@RequestParam double exportPrice, Pageable pageable) {
+//        return new ResponseEntity<>(serExportDetail.FindByExportPricePage(exportPrice,pageable).getContent(), HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/ins", method = RequestMethod.PUT)
     @CrossOrigin(origins = "*", maxAge = 3600)
@@ -96,5 +97,13 @@ public class ContExportDetail {
         return new ResponseEntity<>(serExportDetail.UpdateSent(ExportDetail),HttpStatus.OK);
 
     }
+
+    @RequestMapping(value = "/upd", method = RequestMethod.POST)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> update( @RequestBody DTOExportDetail dtoExportDetail) {
+        return new ResponseEntity<>(serExportDetail.update(dtoExportDetail),HttpStatus.OK);
+
+    }
+
 }
 

@@ -1,11 +1,14 @@
 package com.vv.vveres.table;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 //author: phamthecong@gmail.com
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "TbRetailProduct")
 public class TbRetailProduct {

@@ -1,6 +1,6 @@
 package com.vv.vveres.repo;
 
-import com.vv.vveres.table.TbExportDetail;
+import com.vv.vveres.table.*;
 import com.vv.vveres.table.TbExportDetail;
 
 import org.springframework.data.domain.Page;
@@ -17,9 +17,12 @@ import java.util.Optional;
 
 public interface RepoExportDetail extends JpaRepository<TbExportDetail,Long>
 {
+
     Optional<TbExportDetail> findById(Long id);
-    List<TbExportDetail> findByExpiryDate(Date expiryDate);
-    Page<TbExportDetail> findByExpiryDate(Date expiryDate, Pageable pageable);
-    List<TbExportDetail> findByExportPrice(double exportPrice);
-    Page<TbExportDetail> findByExportPrice(double exportPrice, Pageable pageable);
+    List<TbExportDetail> findAllBy(Pageable pageable);
+    List<TbExportDetail> findAllByTbExportInvoice(TbExportInvoice tbExportInvoice);
+//    List<TbExportDetail> findByExpiryDate(Date expiryDate);
+//    Page<TbExportDetail> findByExpiryDate(Date expiryDate, Pageable pageable);
+//    List<TbExportDetail> findByExportPrice(double exportPrice);
+//    Page<TbExportDetail> findByExportPrice(double exportPrice, Pageable pageable);
 }

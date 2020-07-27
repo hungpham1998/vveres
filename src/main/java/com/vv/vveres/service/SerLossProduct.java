@@ -1,6 +1,7 @@
 package com.vv.vveres.service;
 
 
+import com.vv.vveres.repo.RepoLossProduct;
 import com.vv.vveres.table.TbLossProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,14 +14,19 @@ import java.util.Optional;
 @Service
 public class SerLossProduct {
     @Autowired
-    com.vv.vveres.repo.RepoLossProduct repoLossProduct;
+    RepoLossProduct repoLossProduct;
+
 
     public List<TbLossProduct> getAll(){
         return  repoLossProduct.findAll();
     }
 
+    public List<TbLossProduct> getAllPage(Pageable pageable){
+        return  repoLossProduct.findAllBy(pageable);
+    }
+
     public Page<TbLossProduct> getPage(Pageable pageable){
-        return repoLossProduct.findAll(pageable);
+        return  repoLossProduct.findAll(pageable);
     }
 
     public Optional<TbLossProduct> getById(Long id){

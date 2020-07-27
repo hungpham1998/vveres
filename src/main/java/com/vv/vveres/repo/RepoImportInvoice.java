@@ -14,12 +14,12 @@ import java.util.List;
 
 public interface RepoImportInvoice extends JpaRepository<TbImportInvoice,Long> {
 
-    List<TbImportInvoice> findByInvoiceName(String invoiceName);
+    List<TbImportInvoice> findByInvoicename(String invoicename);
 
     List<TbImportInvoice> findByCode(String code);
 
     Page<TbImportInvoice> findByCode(String code, Pageable pageable);
 
-    Page<TbImportInvoice> findByInvoiceName(String invoiceName, Pageable pageable);
+    Page<TbImportInvoice> findByInvoicename(String invoiceName, Pageable pageable);
 
 }

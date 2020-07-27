@@ -24,6 +24,12 @@ public class ContLossProduct {
         return new ResponseEntity<>(serLossProduct.getAll(), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/getallpage", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> getAllPage(Pageable pageable) {
+        return new ResponseEntity<>(serLossProduct.getAllPage(pageable), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/getpage", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> getPage(Pageable pageable) {

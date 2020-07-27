@@ -2,14 +2,19 @@ package com.vv.vveres.table;
 
 import javax.persistence.*;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import java.util.Date;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "TbImportDetail")
-@Data
+
 // Authen: Hungrost@gamil.com
 public class TbImportDetail {
 
@@ -21,26 +26,26 @@ public class TbImportDetail {
     @Column(name = "active", length = 10)
     private boolean active;
 
-    @Column(name = "debtMoney" ,nullable=false, unique=false, length = 10)
-    private double debtMoney;
+    @Column(name = "debtmoney" ,nullable=false, unique=false, length = 10)
+    private double debtmoney;
 
-    @Column(name = "discountMo",nullable=false, unique=false, length = 10)
-    private double discountMo;
+    @Column(name = "discountmo",nullable=false, unique=false, length = 10)
+    private double discountmo;
 
-    @Column(name = "discountMo1",nullable=false, unique=false, length = 10)
-    private double discountMo1;
+    @Column(name = "discountmo1",nullable=false, unique=false, length = 10)
+    private double discountmo1;
 
-    @Column(name = "discountPer",nullable=false, unique=false, length = 10)
-    private double discountPer;
+    @Column(name = "discountper",nullable=false, unique=false, length = 10)
+    private double discountper;
 
-    @Column(name = "freeNum",nullable=false, unique=false, length = 10)
-    private double freeNum;
+    @Column(name = "freenum",nullable=false, unique=false, length = 10)
+    private double freenum;
 
-    @Column(name = "importNum",nullable=false, unique=false, length = 10)
-    private double importNum;
+    @Column(name = "importnum",nullable=false, unique=false, length = 10)
+    private double importnum;
 
-    @Column(name = "importPrice",nullable=false, unique=false, length = 10)
-    private double importPrice;
+    @Column(name = "importprice",nullable=false, unique=false, length = 10)
+    private double importprice;
 
     @Column(name = "total",nullable=false, unique=false, length = 10)
     private double total;
@@ -49,20 +54,33 @@ public class TbImportDetail {
     private String note;
 
     @Basic(optional = false)
-    @Column(name = "expiryDate", insertable = false, updatable = false, length = 10)
+    @Column(name = "expirydate", insertable = false, updatable = false, length = 10)
     @Temporal(TemporalType.TIMESTAMP)
-    Date expiryDate;
+    Date expirydate;
 
-    @Column(name = "unitId",nullable=false, unique=false, length = 10)
-    private long unitId;
 
-    @Column(name = "restaurantId",nullable=false, unique=false, length = 10)
-    private long restaurantId;
+//    @ManyToOne
+//    @JoinColumn(name = "unitid", nullable = false)
+//    @JsonIgnoreProperties("unitImportDetail")
+//    private TbUnit importDetailUnit;
 
-    @Column(name = "invoicedId",nullable=false, unique=false, length = 10)
-    private long invoiceId;
 
-    @Column(name = "productId",nullable=false, unique=false, length = 10)
-    private long productId;
+    @ManyToOne
+    @JoinColumn(name = "restaurantid", nullable = false)
+   // @JsonIgnoreProperties("restaurantImportDetail")
+    private TbRestaurant importDetailRestaurant;
+
+    @ManyToOne
+    @JoinColumn(name = "invoicedid", nullable = false)
+   // @JsonIgnoreProperties("importInvoiceDetail")
+    private TbImportInvoice importDetailInvoice;
+
+
+    @ManyToOne
+    @JoinColumn(name = "productid", nullable = false)
+  //  @JsonIgnoreProperties("productImportDetail")
+    private TbProduct importDetailProduct;
+
+
 
 }

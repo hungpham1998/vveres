@@ -27,8 +27,8 @@ public class SerImportInvoice {
         return repoImportInvoice.findByCode(code, pageable);
     }
 
-    public Page<TbImportInvoice> getInvoiceNameCode(String invoiceName, Pageable pageable){
-        return repoImportInvoice.findByInvoiceName(invoiceName, pageable);
+    public Page<TbImportInvoice> getInvoiceNameCode(String invoicename, Pageable pageable){
+        return repoImportInvoice.findByInvoicename(invoicename, pageable);
     }
 
     public Optional<TbImportInvoice> getById(long id)
@@ -40,8 +40,8 @@ public class SerImportInvoice {
         return repoImportInvoice.findByCode(code);
     }
 
-    public  List<TbImportInvoice> getByInvoiceName(String invoiceName){
-        return repoImportInvoice.findByInvoiceName(invoiceName);
+    public  List<TbImportInvoice> getByInvoiceName(String invoicename){
+        return repoImportInvoice.findByInvoicename(invoicename);
     }
 
     public  TbImportInvoice insSent(TbImportInvoice invoice){

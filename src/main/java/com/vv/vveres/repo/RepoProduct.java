@@ -17,5 +17,7 @@ public interface RepoProduct extends JpaRepository<TbProduct,Long> {
     List<TbProduct> findByTitle(String title);
     Page<TbProduct> findByTitle(String title, Pageable pageable);
 
+    List<TbProduct> findAllBy(Pageable pageable);
+
 }
 

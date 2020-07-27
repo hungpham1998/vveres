@@ -1,10 +1,17 @@
 package com.vv.vveres.table;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 //author: phamthecong@gmail.com
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "TbRestaurant")
 public class TbRestaurant {
@@ -28,9 +35,44 @@ public class TbRestaurant {
     @Column(length = 15,name = "phoneNumber")
     private  String phoneNumber;
 
-    @Column(length = 20,name = "mail")
+    @Column(length = 35,name = "mail")
     private  String mail;
 
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "exportDetailRestaurant")
+//    @JsonIgnoreProperties("exportDetailRestaurant")
+//    private Set<TbExportDetail> restaurantExportDetail = new HashSet<>();
+//
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "importDetailRestaurant")
+    @JsonIgnoreProperties("importDetailRestaurant")
+    private Set<TbImportDetail> restaurantImportDetail = new HashSet<>();
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderTableRestaurant")
+    @JsonIgnoreProperties("orderTableRestaurant")
+    private Set<TbOrderTable> restaurantOrderTable = new HashSet<>();
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "perparationRestaurant")
+    @JsonIgnoreProperties("perparationRestaurant")
+    private Set<TbPreparation> restaurantPreparation = new HashSet<>();
+
+
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "importInvoiceRestaurant")
+//    @JsonIgnoreProperties("importInvoiceRestaurant")
+//    private Set<TbImportInvoice> restaurantImportInvoice = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "inexRestaurant")
+    @JsonIgnoreProperties("inexRestaurant")
+    private Set<TbInEx> restaurantInEx = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "perparationDetailRestaurant")
+    @JsonIgnoreProperties("perparationDetailRestaurant")
+    private Set<TbPreparationDetail> restaurantPreparationDetail = new HashSet<>();
+
+    // tranducdang@gmail.com
+
+    @OneToMany(mappedBy = "tbRestaurant", fetch = FetchType.LAZY)
+    private Set<TbOrder> tbOrder;
 }
 

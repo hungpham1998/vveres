@@ -1,13 +1,22 @@
 package com.vv.vveres.dto;
 
 import javax.persistence.*;
-import lombok.Data;
 
-@Entity
-@Data
+import com.vv.vveres.table.TbRestaurant;
+import com.vv.vveres.table.TbUnit;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class DTOProduct {
-
-    private long id;
+    private Long id;
 
     private  String title;
 
@@ -25,13 +34,10 @@ public class DTOProduct {
 
     private  long unitId;
 
-    private String titleUnit;
-
     private  long restaurantId;
-
-    private String titleRestaurant;
 
     private  long groupProductId;
 
-    private String titleGroupProduct;
+    private List<TbUnit> units = new ArrayList<>();
+    //    private Set<TbRestaurant> restaurants = new HashSet<>();
 }

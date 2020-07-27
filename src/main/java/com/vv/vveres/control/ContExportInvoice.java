@@ -1,5 +1,10 @@
 package com.vv.vveres.control;
 
+import com.vv.vveres.dto.DTOExportDetail;
+import com.vv.vveres.dto.DTOExportInvoice;
+import com.vv.vveres.dto.DTOOrderDetail;
+import com.vv.vveres.service.SerExportDetail;
+import com.vv.vveres.service.SerExportInvoice;
 import com.vv.vveres.table.TbExportInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 // author: vutrananh98hn@gmail.com
 
@@ -18,13 +24,32 @@ import java.util.Date;
 
 public class ContExportInvoice {
     @Autowired
-    com.vv.vveres.service.SerExportInvoice serExportInvoice;
+    SerExportInvoice serExportInvoice;
+
+    @Autowired
+    SerExportDetail serExportDetail;
+
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     @CrossOrigin(origins = "*", maxAge = 3600)
     public ResponseEntity<?> getAll()
     {
         return new ResponseEntity<>(serExportInvoice.GetAll(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/getalldto1", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> getAllDto(Pageable pageable)
+    {
+        return new ResponseEntity<>(serExportInvoice.getDTOExportInvoicePage(pageable),HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/getalldto", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public ResponseEntity<?> getAllDtoPage(Pageable pageable)
+    {
+        List<DTOExportDetail> dtoExportDetails =  serExportDetail.getAllExportDetail(pageable);
+        return new ResponseEntity<>(dtoExportDetails,HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getpage", method = RequestMethod.GET)
@@ -67,23 +92,23 @@ public class ContExportInvoice {
         return new ResponseEntity<>(serExportInvoice.FindByInvoiceNamePage(invoiceName,pageable).getContent(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/findbyinvoicedate", method = RequestMethod.GET)
-    @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> findByInvoiceDate(@RequestParam Date invoiceDate)
-    {
-        return new ResponseEntity<>(serExportInvoice.FindByInvoiceDate(invoiceDate), HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/findbyinvoicedate", method = RequestMethod.GET)
+//    @CrossOrigin(origins = "*", maxAge = 3600)
+//    public ResponseEntity<?> findByInvoiceDate(@RequestParam Date invoiceDate)
+//    {
+//        return new ResponseEntity<>(serExportInvoice.FindByInvoiceDate(invoiceDate), HttpStatus.OK);
+//    }
+//
+//    @RequestMapping(value = "/findbyinvoicedatepage", method = RequestMethod.PUT)
+//    @CrossOrigin(origins = "*", maxAge = 3600)
+//    public ResponseEntity<?> findByInvoiceDatePage(@RequestParam Date invoiceDate, Pageable pageable) {
+//        return new ResponseEntity<>(serExportInvoice.FindByInvoiceDatePage(invoiceDate,pageable).getContent(), HttpStatus.OK);
+//
+//    }
 
-    @RequestMapping(value = "/findbyinvoicedatepage", method = RequestMethod.PUT)
+    @RequestMapping(value = "/ins", method = RequestMethod.POST)
     @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> findByInvoiceDatePage(@RequestParam Date invoiceDate, Pageable pageable) {
-        return new ResponseEntity<>(serExportInvoice.FindByInvoiceDatePage(invoiceDate,pageable).getContent(), HttpStatus.OK);
-
-    }
-
-    @RequestMapping(value = "/ins", method = RequestMethod.PUT)
-    @CrossOrigin(origins = "*", maxAge = 3600)
-    public ResponseEntity<?> insSent(@RequestBody TbExportInvoice prInput)
+    public ResponseEntity<?> insSent(@RequestBody DTOExportInvoice prInput)
     {
         return new ResponseEntity<>(serExportInvoice.InsSent(prInput), HttpStatus.OK);
     }

@@ -1,6 +1,6 @@
 
 server:
-  port: 3960
+  port: 3309
 
 spring:
   jackson.serialization.fail-on-empty-beans: false

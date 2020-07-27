@@ -1,11 +1,22 @@
 package com.vv.vveres.table;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-//author: phamthecong@gmail.com
-@Data
+
+//author: tranducdang@gmail.com
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "TbProduct")
 public class TbProduct {
@@ -36,14 +47,54 @@ public class TbProduct {
     private  String image;
 
     @Column(length = 10,name = "unitId")
-    private  long unitId;
+    private  Long unitId;
 
     @Column(length = 10,name = "restaurantId")
-    private  long restaurantId;
+    private  Long restaurantId;
 
     @Column(length = 10,name = "groupProductId")
-    private  long groupProductId;
+    private  Long groupProductId;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+
+    // Relationship
+    //@JsonManagedReference
+    @JoinTable(name = "product_unit",
+            joinColumns = @JoinColumn(
+                    name = "product_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "unit_id", referencedColumnName = "id"))
+    @JsonIgnore
+    //@JsonIgnoreProperties({"products"})
+    private Set<TbUnit> units = new HashSet<>();
+
+    //-- TbProduct 1-n TbOrderDetail
+    //@JsonBackReference
+    //@JsonIgnoreProperties("tbOrderDetail")
+    @OneToMany(mappedBy = "tbProduct", fetch = FetchType.LAZY)
+    private Set<TbOrderDetail> tbOrderDetail;
 
 
+//    @JsonBackReference
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tbProduct")
+    private Set<TbExportDetail> tbExportDetails;
+
+
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "importDetailProduct")
+//    @JsonIgnoreProperties("importDetailProduct")
+//    private Set<TbImportDetail> productImportDetail = new HashSet<>();
+//
+//
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "preparationDetailProduct")
+//    @JsonIgnoreProperties("preparationDetailProduct")
+//    private Set<TbPreparationDetail> productPreparationDetail = new HashSet<>();
+//
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "preparationProduct")
+//    @JsonIgnoreProperties("preparationProduct")
+//    private Set<TbPreparation> productPreparation = new HashSet<>();
 
 }

@@ -1,13 +1,16 @@
 package com.vv.vveres.table;
 
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 //author: phamthecong@gmail.com
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "TbRateRestaurant")
 public class TbRateRestaurant {
@@ -39,6 +42,7 @@ public class TbRateRestaurant {
 
     @Column(length = 10,name = "customerId")
     private long customerId;
+
 
 
 

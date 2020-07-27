@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 //author: phamthecong@gmail.com
@@ -25,8 +27,8 @@ public class SerStaffment {
     public List<TbStaffment > FindByTitle(String title) {
         return repoStaffment .findByTitle(title);
     }
-    public List<TbStaffment > FindByIdCard(String idCard) {
-        return repoStaffment .findByIdCard(idCard);
+    public List<TbStaffment > FindByIdCard(String idcard) {
+        return repoStaffment .findByIdcard(idcard);
     }
     public List<TbStaffment > FindByAddress(String address) {
         return repoStaffment .findByAddress(address);
@@ -40,8 +42,8 @@ public class SerStaffment {
     public Page<TbStaffment> FindByTitlePage(String title, Pageable pageable){
         return repoStaffment.findByTitle(title, pageable);
     }
-    public Page<TbStaffment> FindByIdCardPage(String idCard, Pageable pageable){
-        return repoStaffment.findByIdCard(idCard, pageable);
+    public Page<TbStaffment> FindByIdCardPage(String idcard, Pageable pageable){
+        return repoStaffment.findByIdcard(idcard, pageable);
     }
     public Page<TbStaffment> FindByAddressPage(String address, Pageable pageable){
         return repoStaffment.findByAddress(address, pageable);
@@ -53,11 +55,17 @@ public class SerStaffment {
         return repoStaffment.findByMail(mail, pageable);
     }
 
-
-
-
     public TbStaffment  InsSent(TbStaffment  input){
-        return repoStaffment .save(input);
+        try{
+            Timestamp ts = new Timestamp(input.getBirthday().getTime());
+            Timestamp startday = new Timestamp(input.getStartday().getTime());
+            input.setStartday(startday);
+            input.setBirthday(ts);
+            return repoStaffment.save(input);
+        }
+            catch (Exception ex){
+            return null;
+        }
     }
     public void Delete (Long id){
         repoStaffment .deleteById(id);

@@ -3,13 +3,20 @@ package com.vv.vveres.table;
 
 import javax.persistence.*;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import java.util.Date;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "TbLossProduct")
-@Data
+
+
 // Authen: Hungrost@gamil.com
 public class TbLossProduct {
     @Id
@@ -17,30 +24,37 @@ public class TbLossProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @Column(name = "lossNum",nullable=false, unique=false, length = 10)
-    private double lossNum;
+    @Column(name = "lossnum",nullable=false, unique=false, length = 10)
+    private double lossnum;
 
     @Column(name = "importprice",nullable=false, unique=false, length = 10)
-    private double importPrice;
+    private double importprice;
     
     @Basic(optional = false)
-    @Column(name = "lossDate", insertable = false, updatable = false, length =  10)
+    @Column(name = "lossdate", insertable = false, updatable = false, length =  10)
     @Temporal(TemporalType.TIMESTAMP)
-    Date lossDate;
+    Date lossdate;
 
     @Column(name="note")
     private  String note;
 
-    @Column(name="productId",nullable=false, unique=false, length = 10)
-    private  long productId;
 
-    @Column(name="unitId",nullable=false, unique=false, length = 10)
-    private  long unitId;
-
-    @Column(name="restaurantId",nullable=false, unique=false, length = 10)
-    private  long restaurantId;
+    @Column(name="restaurantid",nullable=false, unique=false, length = 10)
+    private  long restaurantid;
 
     @Column(name="status")
     private  boolean status;
 
+//
+//    @ManyToOne
+//    @JoinColumn(name = "productid", nullable = false)
+//    @JsonIgnoreProperties("lossProduct")
+//    private TbProduct product;
+//
+//
+//    @ManyToOne
+//    @JoinColumn(name = "unitid", nullable = false)
+//    @JsonIgnoreProperties("lossProductUnit")
+//    private TbUnit unitLossProduct;
+//
 }
